@@ -38,7 +38,7 @@ def _page_url(search_url: str, page: int) -> str:
     query = dict(parse_qsl(parts.query))
     query["s"] = str(page * 120)
     return urlunsplit((parts.scheme, parts.netloc, parts.path, urlencode(query), ""))
-
+MAKE_MODEL_RE = re.compile(r"^(?:19|20)\d{2}\n([A-Za-z-]+)\s+([A-Za-z0-9-]+)", re.MULTILINE)
 # Listing pages look like either:
 #   new: https://www.craigslist.org/view/d/<title-slug>/<post_id>
 #   old: https://<city>.craigslist.org/cto/d/<title-slug>/<post_id>.html
